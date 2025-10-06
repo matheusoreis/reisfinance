@@ -32,6 +32,12 @@ dependencies:
     sdk: flutter
 
   google_fonts: ^6.3.2
+  flutter_svg: ^2.2.0
+  intl: ^0.20.2
+  get_it: ^8.2.0
+  result_dart: ^2.1.1
+  gap: ^3.0.1
+  flutter_tabler_icons: ^1.43.0
 
 dev_dependencies:
   flutter_test:
