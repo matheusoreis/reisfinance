@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomePageStore store = dependency.get<HomePageStore>();
-
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -23,31 +22,49 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       key: scaffoldKey,
+
       drawer: Drawer(
         backgroundColor: colorScheme.surfaceContainerHighest,
         child: SafeArea(
           child: Column(
-            children: [
-              const SizedBox(height: 16),
+            children: const [
+              SizedBox(height: 16),
               ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text('Início'),
-                onTap: () {},
+                leading: Icon(Icons.home),
+                title: Text('Início'),
               ),
               ListTile(
-                leading: const Icon(Icons.account_balance_wallet),
-                title: const Text('Finanças'),
-                onTap: () {},
+                leading: Icon(Icons.account_balance_wallet),
+                title: Text('Finanças'),
               ),
               ListTile(
-                leading: const Icon(Icons.settings),
-                title: const Text('Configurações'),
-                onTap: () {},
+                leading: Icon(Icons.settings),
+                title: Text('Configurações'),
               ),
             ],
           ),
         ),
       ),
+
+      endDrawer: Drawer(
+        backgroundColor: colorScheme.surfaceContainerHighest,
+        child: SafeArea(
+          child: Column(
+            children: const [
+              SizedBox(height: 16),
+              ListTile(
+                leading: Icon(Icons.tune),
+                title: Text('Filtros'),
+              ),
+              ListTile(
+                leading: Icon(Icons.info_outline),
+                title: Text('Sobre o app'),
+              ),
+            ],
+          ),
+        ),
+      ),
+
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: SafeArea(
@@ -74,15 +91,14 @@ class _HomePageState extends State<HomePage> {
                 _buildPillButton(
                   context,
                   icon: TablerIcons.filter,
-                  onPressed: () {
-                    store.toggleTheme();
-                  },
+                  onPressed: () => scaffoldKey.currentState?.openEndDrawer(),
                 ),
               ],
             ),
           ),
         ),
       ),
+
       body: Padding(
         padding: EdgeInsets.all(context.padding),
         child: ClipRRect(
