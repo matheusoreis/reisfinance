@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reisfinance/app/config/theme.dart';
+import 'package:reisfinance/app/ui/pages/home/page.dart';
+import 'package:reisfinance/app/ui/pages/intro/page.dart';
+import 'package:reisfinance/app/ui/pages/splash/page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -39,7 +42,12 @@ class _AppState extends State<App> {
 
     return MaterialApp(
       title: 'Reis Finance',
-      theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+      theme: theme.light(),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/intro': (context) => IntroPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }

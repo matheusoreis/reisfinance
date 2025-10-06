@@ -8,4 +8,5 @@ extension ScreenContext on BuildContext {
   double get buttonHeight => 50.0;
   double get buttonWidth => screenWidth;
   double get borderRadius => 10.0;
+  double get padding => 10.0;
 }
