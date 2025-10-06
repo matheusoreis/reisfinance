@@ -16,13 +16,15 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+
     store.start(context);
   }
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
       body: SafeArea(
         child: SizedBox(
           width: context.screenWidth,
@@ -32,7 +34,9 @@ class _SplashPageState extends State<SplashPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/logo.png',
+                brightness == Brightness.light
+                    ? 'assets/images/logo_light.png'
+                    : 'assets/images/logo_dark.png',
                 width: 150,
               ),
             ],
