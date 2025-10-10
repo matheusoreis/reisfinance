@@ -3,10 +3,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reisfinance/app/config/dependencies.dart';
 import 'package:reisfinance/app/config/theme.dart';
-import 'package:reisfinance/app/store.dart';
-import 'package:reisfinance/app/ui/pages/home/page.dart';
-import 'package:reisfinance/app/ui/pages/intro/page.dart';
-import 'package:reisfinance/app/ui/pages/splash/page.dart';
+import 'package:reisfinance/app/pages/config_page.dart';
+import 'package:reisfinance/app/pages/home_page.dart';
+import 'package:reisfinance/app/pages/intro_page.dart';
+import 'package:reisfinance/app/pages/splash_page.dart';
+import 'package:reisfinance/app/stores/theme_store.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -16,13 +17,18 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final AppStore store = dependency.get<AppStore>();
+  final ThemeStore themeStore = dependency.get<ThemeStore>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final TextTheme baseTextTheme = Theme.of(context).textTheme;
 
-    TextTheme bodyTextTheme = GoogleFonts.getTextTheme(
+    final TextTheme bodyTextTheme = GoogleFonts.getTextTheme(
       "Poppins",
       baseTextTheme,
     );
@@ -44,11 +50,11 @@ class _AppState extends State<App> {
     );
 
     return ListenableBuilder(
-      listenable: store,
+      listenable: themeStore,
       builder: (context, _) {
         return MaterialApp(
           title: 'Reis Finance',
-          themeMode: store.themeMode,
+          themeMode: themeStore.themeMode,
           theme: theme.light(),
           darkTheme: theme.dark(),
           locale: const Locale('pt', 'BR'),
@@ -65,6 +71,7 @@ class _AppState extends State<App> {
             '/': (context) => SplashPage(),
             '/intro': (context) => IntroPage(),
             '/home': (context) => HomePage(),
+            '/config': (context) => ConfigPage(),
           },
         );
       },

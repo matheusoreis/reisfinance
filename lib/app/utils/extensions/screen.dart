@@ -7,6 +7,6 @@ extension ScreenContext on BuildContext {
   double get screenWidthCenter => MediaQuery.sizeOf(this).width / 2;
   double get buttonHeight => 50.0;
   double get buttonWidth => screenWidth;
-  double get borderRadius => 10.0;
+  double get radius => 10.0;
   double get padding => 10.0;
 }

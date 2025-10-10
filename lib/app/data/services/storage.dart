@@ -2,7 +2,7 @@ import 'package:reisfinance/app/data/exceptions.dart';
 import 'package:result_dart/result_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorage {
+class StorageService {
   AsyncResult<String> saveData(String key, String value) async {
     try {
       final shared = await SharedPreferences.getInstance();
