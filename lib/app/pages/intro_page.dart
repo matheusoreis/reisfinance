@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:reisfinance/app/config/dependencies.dart';
-import 'package:reisfinance/app/pages/components/my_button.dart';
 import 'package:reisfinance/app/pages/components/page_indicator.dart';
 import 'package:reisfinance/app/pages/components/primary_card.dart';
 import 'package:reisfinance/app/pages/components/surface_card.dart';
+import 'package:reisfinance/app/pages/components/themed_button.dart';
 import 'package:reisfinance/app/stores/intro_store.dart';
 import 'package:reisfinance/app/utils/extensions/screen.dart';
-import 'package:reisfinance/app/utils/functions/color.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -144,21 +144,18 @@ class _IntroActionCard extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              "Acessar o sistema agora mesmo!",
+              "Acessar o sistema",
               overflow: TextOverflow.visible,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Theme.of(context).colorScheme.surface,
               ),
             ),
           ),
-          MyButton(
+          ThemedButton(
             label: isLast ? "Acessar" : "Próximo",
-            color: colorByTheme(
-              context,
-              light: Theme.of(context).colorScheme.tertiary,
-              dark: Theme.of(context).colorScheme.primary,
-            ),
-            textColor: Theme.of(context).colorScheme.onSurface,
+            prefixIcon: isLast
+                ? TablerIcons.door_enter
+                : TablerIcons.chevron_right,
             onPressed: onNext,
           ),
         ],

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:reisfinance/app/config/dependencies.dart';
 import 'package:reisfinance/app/config/theme.dart';
 import 'package:reisfinance/app/pages/config_page.dart';
-import 'package:reisfinance/app/pages/home_page.dart';
+import 'package:reisfinance/app/pages/home/page.dart';
 import 'package:reisfinance/app/pages/intro_page.dart';
 import 'package:reisfinance/app/pages/splash_page.dart';
 import 'package:reisfinance/app/stores/theme_store.dart';

@@ -5,7 +5,7 @@ import 'package:reisfinance/app/data/repositories/theme.dart';
 import 'package:reisfinance/app/data/services/storage.dart';
 import 'package:reisfinance/app/stores/config_store.dart';
 import 'package:reisfinance/app/store.dart';
-import 'package:reisfinance/app/stores/home_store.dart';
+import 'package:reisfinance/app/pages/home/store.dart';
 import 'package:reisfinance/app/stores/intro_store.dart';
 import 'package:reisfinance/app/stores/splash_store.dart';
 import 'package:reisfinance/app/stores/theme_store.dart';
@@ -64,7 +64,7 @@ class Dependencies {
     );
 
     dependency.registerSingleton<HomeStore>(
-      HomeStore(),
+      HomeStore(themeStore: dependency.get<ThemeStore>()),
     );
   }
 
